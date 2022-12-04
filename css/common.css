@@ -1,0 +1,83 @@
+@import url(../css/grid-system.css);
+@import url(../css/components/button.css);
+@import url(../css/components/dialog.css);
+@import url(../css/components/dropdownlist.css);
+@import url(../css/components/input.css);
+@import url(../css/components/popup.css);
+@import url(../css/components/table.css);
+@import url(../css/components/form.css);
+@import url(../css/components/contextMenu.css);
+
+@font-face {
+  font-family: notosans-regular;
+  src: url(../assets/fonts/notosans-regular.2cb88a13.woff2);
+}
+
+:root {
+  --main-color: #01A38A;
+  --main-color-900: #00201B;
+  --main-color-800: #004137;
+  --main-color-700: #016253;
+  --main-color-600: #01836F;
+  --main-color-400: #34B6A2;
+  --main-color-300: #67C8B9;
+  --main-color-200: #99DAD0;
+  --main-color-100: #CCECE7;
+  --main-color-50: #E6F6F3;
+
+  --wcag-title-color: #000000;
+  --wcag-primary-text-color: #212121;
+  --wcag-secondary-text-color: #666666;
+  --wcag-disable-color: #9E9E9E;
+  --wcag-border-color: #E0E0E0;
+  --wcag-background-color: #F7F7F7;
+  --wcag-white-color: #FFF;
+
+  --btn-primary-color: #50B83C;
+  --btn-primary-hover-color: #5DC748;
+  --btn-primary-press-color: #118044;
+  --btn-icon-color: #E6F1E4;
+  --btn-danger-color: #E81E1E;
+
+  --table-row-height: 48px;
+  --table-header-background: #E0E0E0;
+  --table-hover-background: #F2F2F2;
+
+  --popup-body-background: #FFFFFF;
+  --popup-footer-background: #F5F5F5;
+
+  --sidebar-background: #393A3E;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: notosans-regular;
+  font-size: 14px;
+}
+
+@media screen and (max-width: 1280px) {
+  html {
+    font-size: 13px;
+  }
+}
+
+.--text-center {
+  text-align: center;
+}
+
+.--text-left {
+  text-align: left;
+}
+
+.--text-right {
+  text-align: right;
+}
+
+.--display-none {
+  display: none;
+}
