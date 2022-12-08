@@ -28,7 +28,10 @@
   justify-content: space-between;
 }
 
-.m-popup-body__heading {}
+.m-popup-body__heading {
+  display: flex;
+  gap: 16px;
+}
 
 .m-popup-body__title {
   font-size: 24px;
@@ -53,16 +56,19 @@
   background-color: var(--popup-footer-background);
   display: flex;
   justify-content: space-between;
-}
-
-.m-popup-container__footer div~div {
-  margin-left: 8px;
+  flex-direction: row-reverse;
 }
 
 .m-popup-footer__left-panel {}
 
 .m-popup-footer__right-panel {
   float: right;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.m-popup-footer__right-panel .m-btn~.m-btn {
+  margin-right: 8px;
 }
 
 .m-popup-form__textfield {

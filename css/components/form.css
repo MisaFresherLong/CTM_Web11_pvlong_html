@@ -19,7 +19,7 @@
   text-align: right;
 }
 
-.m-form__footer>div~div {
+.m-form__footer>.m-btn~.m-btn {
   margin-left: 12px;
 }
 

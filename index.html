@@ -126,285 +126,392 @@
       <!-- function bar start -->
       <div class="main-content__function-bar">
         <h2>Nhân viên</h2>
-        <label for="popup-switch">
-          <div class="m-btn primary-btn">
-            Thêm mới nhân viên
-          </div>
-        </label>
+        <div id="addEmployeeBtn" class="function-bar__add-employee-btn m-btn primary-btn">
+          Thêm mới nhân viên
+        </div>
       </div>
       <!-- function bar end -->
       <!-- table content start -->
       <div class="main-content__table-content">
         <!-- table function start -->
-        <div class="table-function">
-          <label class="m-textfield --search-icon">
-            <div class="m-input-container">
-              <input class="m-input-container__input " type="text" name="input" placeholder="Placeholder">
-              <div class="m-input-container__icon m-icon"></div>
-            </div>
-          </label>
-          <div class="table-function__refreshIcon m-icon"></div>
+        <div class="table-toolbar">
+          <div class="toolbar__left-panel">
+            <button id="deleteManyBtn" type="button" class="m-btn m-btn-with-icon primary-btn --danger" disabled>
+              <div class="btn-icon delete-btn"></div> Xóa
+            </button>
+          </div>
+          <div class="toolbar__right-panel">
+            <label class="m-textfield --search-icon">
+              <div class="m-input-container">
+                <input class="m-input-container__input " type="text" name="search" placeholder="Tìm kiếm">
+                <button type="button" class="m-input-container__icon m-icon" tabindex="-1"></button>
+              </div>
+            </label>
+            <div class="table-toolbar__refreshIcon m-icon"></div>
+          </div>
         </div>
         <!-- table function start -->
         <!-- table start -->
         <div class="m-table">
-          <table>
-            <tr class="m-table__header">
-              <th><input type="checkbox" name="" id=""></th>
-              <th>MÃ NHÂN VIÊN</th>
-              <th colspan="2">TÊN NHÂN VIÊN<div class="m-table-header__icon"></div>
-              </th>
-              <th>GIỚI TÍNH</th>
-              <th class="--text-center">NGÀY SINH</th>
-              <th title="Số chứng minh nhân dân">SỐ CMND</th>
-              <th class="--text-right">HỆ SỐ LƯƠNG</th>
-              <th>CHỨC DANH</th>
-              <th>TÊN ĐƠN VỊ</th>
-              <th>SỐ TÀI KHOẢN</th>
-              <th>TÊN NGÂN HÀNG</th>
-              <th>CHI NHÁNH NGÂN HÀNG</th>
-              <th>CHỨC NĂNG</th>
-            </tr>
-            <tr>
-              <td><input type="checkbox" name="" id=""></td>
-              <td>00012</td>
-              <td colspan="2">Nguyễn Trần Văn Liệt</td>
-              <td>Nam</td>
-              <td class="--text-center">31/12/1969</td>
-              <td>036256882525</td>
-              <td class="--text-right">1.25</td>
-              <td>Trưởng nhóm</td>
-              <td>Xay keo - Phối trộn</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td>
-                <!-- context button start -->
-                <div class="m-context-menu-btn">
-                  <div class="m-context-menu-btn__label">Sửa</div>
-                  <div class="m-context-menu-btn__icon">
-                    <div class="m-context-menu">
-                      <div class="m-context-menu-item">
-                        <div class="m-context-menu-item__text">Nhân bản</div>
-                      </div>
-                      <div class="m-context-menu-item">
-                        <div class="m-context-menu-item__text">Xóa</div>
-                      </div>
-                      <div class="m-context-menu-item">
-                        <div class="m-context-menu-item__text">Ngưng sử dụng</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- context button end -->
-              </td>
-            </tr>
-            <tr>
-              <td><input type="checkbox" name="" id=""></td>
-              <td>00012</td>
-              <td colspan="2">Nguyễn Trần Văn Liệt</td>
-              <td>Nam</td>
-              <td class="--text-center">31/12/1969</td>
-              <td>036256882525</td>
-              <td class="--text-right">1.25</td>
-              <td>Trưởng nhóm</td>
-              <td>Xay keo - Phối trộn</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td>
-                <!-- context button start -->
-                <div class="m-context-menu-btn">
-                  <div class="m-context-menu-btn__label">Sửa</div>
-                  <div class="m-context-menu-btn__icon">
-                    <div class="m-context-menu">
-                      <div class="m-context-menu-item">
-                        <div class="m-context-menu-item__text">Nhân bản</div>
-                      </div>
-                      <div class="m-context-menu-item">
-                        <div class="m-context-menu-item__text">Xóa</div>
-                      </div>
-                      <div class="m-context-menu-item">
-                        <div class="m-context-menu-item__text">Ngưng sử dụng</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- context button end -->
-              </td>
-            </tr>
-            <tr>
-              <td><input type="checkbox" name="" id=""></td>
-              <td>00012</td>
-              <td colspan="2">Nguyễn Trần Văn Liệt</td>
-              <td>Nam</td>
-              <td class="--text-center">31/12/1969</td>
-              <td>036256882525</td>
-              <td class="--text-right">1.25</td>
-              <td>Trưởng nhóm</td>
-              <td>Xay keo - Phối trộn</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td>
-                <!-- context button start -->
-                <div class="m-context-menu-btn">
-                  <div class="m-context-menu-btn__label">Sửa</div>
-                  <div class="m-context-menu-btn__icon">
-                    <div class="m-context-menu">
-                      <div class="m-context-menu-item">
-                        <div class="m-context-menu-item__text">Nhân bản</div>
-                      </div>
-                      <div class="m-context-menu-item">
-                        <div class="m-context-menu-item__text">Xóa</div>
-                      </div>
-                      <div class="m-context-menu-item">
-                        <div class="m-context-menu-item__text">Ngưng sử dụng</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- context button end -->
-              </td>
-            </tr>
-            <tr>
-              <td><input type="checkbox" name="" id=""></td>
-              <td>00012</td>
-              <td colspan="2">Nguyễn Trần Văn Liệt</td>
-              <td>Nam</td>
-              <td class="--text-center">31/12/1969</td>
-              <td>036256882525</td>
-              <td class="--text-right">1.25</td>
-              <td>Trưởng nhóm</td>
-              <td>Xay keo - Phối trộn</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td>
-                <!-- context button start -->
-                <div class="m-context-menu-btn">
-                  <div class="m-context-menu-btn__label">Sửa</div>
-                  <div class="m-context-menu-btn__icon">
-                    <div class="m-context-menu">
-                      <div class="m-context-menu-item">
-                        <div class="m-context-menu-item__text">Nhân bản</div>
-                      </div>
-                      <div class="m-context-menu-item">
-                        <div class="m-context-menu-item__text">Xóa</div>
-                      </div>
-                      <div class="m-context-menu-item">
-                        <div class="m-context-menu-item__text">Ngưng sử dụng</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- context button end -->
-              </td>
-            </tr>
-            <tr>
-              <td><input type="checkbox" name="" id=""></td>
-              <td>00012</td>
-              <td colspan="2">Nguyễn Trần Văn Liệt</td>
-              <td>Nam</td>
-              <td class="--text-center">31/12/1969</td>
-              <td>036256882525</td>
-              <td class="--text-right">1.25</td>
-              <td>Trưởng nhóm</td>
-              <td>Xay keo - Phối trộn</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td>
-                <!-- context button start -->
-                <div class="m-context-menu-btn">
-                  <div class="m-context-menu-btn__label">Sửa</div>
-                  <div class="m-context-menu-btn__icon">
-                    <div class="m-context-menu">
-                      <div class="m-context-menu-item">
-                        <div class="m-context-menu-item__text">Nhân bản</div>
-                      </div>
-                      <div class="m-context-menu-item">
-                        <div class="m-context-menu-item__text">Xóa</div>
-                      </div>
-                      <div class="m-context-menu-item">
-                        <div class="m-context-menu-item__text">Ngưng sử dụng</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- context button end -->
-              </td>
-            </tr>
-            <tr>
-              <td><input type="checkbox" name="" id=""></td>
-              <td>00012</td>
-              <td colspan="2">Nguyễn Trần Văn Liệt</td>
-              <td>Nam</td>
-              <td class="--text-center">31/12/1969</td>
-              <td>036256882525</td>
-              <td class="--text-right">1.25</td>
-              <td>Trưởng nhóm</td>
-              <td>Xay keo - Phối trộn</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td>
-                <!-- context button start -->
-                <div class="m-context-menu-btn">
-                  <div class="m-context-menu-btn__label">Sửa</div>
-                  <div class="m-context-menu-btn__icon">
-                    <div class="m-context-menu">
-                      <div class="m-context-menu-item">
-                        <div class="m-context-menu-item__text">Nhân bản</div>
-                      </div>
-                      <div class="m-context-menu-item">
-                        <div class="m-context-menu-item__text">Xóa</div>
-                      </div>
-                      <div class="m-context-menu-item">
-                        <div class="m-context-menu-item__text">Ngưng sử dụng</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- context button end -->
-              </td>
-            </tr>
-          </table>
+          <div id="table-loading">
+            <div class="loading-container">
+              <div class="loading-icon"></div>
+            </div>
+          </div>
+          <div class="m-table-sticky --sticky-first-col">
+            <table>
+              <thead></thead>
+              <tbody></tbody>
+            </table>
+          </div>
           <div class="m-table-paging">
-            <div class="m-table-paging__total">Tổng số: <strong>4</strong> bản ghi</div>
+            <div class="m-table-paging__total">Tổng: <strong>4</strong></div>
             <div class="m-table-pagin__rightPanel">
-              <div class="m-table-paging__recordPerPage">
-                <!-- dropdownlist top start -->
-                <div class="m-dropdownlist --toplist">
-                  <label for="">Số bản ghi/trang </label>
-                  <!-- textfield with icon start -->
-                  <div class="m-textfield">
-                    <div class="m-input-container">
-                      <input class="m-input-container__input " type="text" name="input" placeholder="" disabled>
-                      <button class="m-input-container__icon m-icon"></button>
-                    </div>
+              <!-- dropdownlist top start -->
+              <div id="recordPerPageDropDown" class="m-dropdownlist --init-first --toplist">
+                <label for="">Số bản ghi/trang </label>
+                <!-- textfield with icon start -->
+                <div class="m-textfield w-75">
+                  <div class="m-input-container w-75">
+                    <input class="m-input-container__input" type="text" name="input" placeholder="Placeholder">
+                    <button type="button" class="m-input-container__icon m-icon"></button>
                     <div class="m-dropdownlist-data">
-                      <div class="m-dropdownlist-data__item">10</div>
-                      <div class="m-dropdownlist-data__item">20</div>
-                      <div class="m-dropdownlist-data__item">30</div>
-                      <div class="m-dropdownlist-data__item">50</div>
-                      <div class="m-dropdownlist-data__item">100</div>
                     </div>
                   </div>
-                  <!-- textfield with icon end -->
                 </div>
-                <!-- dropdownlist top end -->
+                <!-- textfield with icon end -->
               </div>
+              <!-- dropdownlist top end -->
               <div class="m-table-paging__currentRecord"><strong>1-4</strong> bản ghi</div>
-              <div class="m-table-paging__previousPage m-icon"></div>
-              <div class="m-table-paging__nextPage m-icon"></div>
+              <div class="m-table-paging__previousPage"></div>
+              <div class="m-table-paging__nextPage"></div>
             </div>
           </div>
         </div>
+        <!-- table end -->
       </div>
     </div>
   </div>
 
+  <form id="employee-form">
+    <!-- popup component start -->
+    <div class="m-popup">
+      <!-- popup container start -->
+      <div class="m-popup-container">
+        <!-- popup body start -->
+        <div class="m-popup-container__body">
+          <!-- popup header start-->
+          <div class="m-popup-body__header">
+            <div class="m-popup-body__heading">
+              <div class="m-popup-body__title employee-form-body__title">Thông tin nhân viên
+              </div>
+              <!-- horizontal checkbox start-->
+              <div class="m-textfield">
+                <div class="m-radio-container m-radio-container--hor">
+                  <div class="m-radio-item">
+                    <input class="m-radio-item__input" type="checkbox" name="isCustomer" placeholder=""
+                      value="isCustomer" id="m-radio-customer">
+                    <label class="m-radio-item__label" for="m-radio-customer">Là khách hàng</label>
+                  </div>
+                  <div class="m-radio-item">
+                    <input class="m-radio-item__input" type="checkbox" name="isSupplier" placeholder=""
+                      value="isSupplier" id="m-radio-supplier">
+                    <label class="m-radio-item__label" for="m-radio-supplier">Là nhà cung cấp</label>
+                  </div>
+                </div>
+              </div>
+              <!-- horizontal checkbox end-->
+            </div>
+            <div class="m-button-container">
+              <div class="m-popup-body__help-btn m-help-btn m-icon"></div>
+              <div id="formCloseBtn" class="m-popup-body__close-btn m-close-btn m-icon"></div>
+            </div>
+          </div>
+          <!-- popup header end-->
+          <!-- popup form start-->
+          <div class="m-popup-body__form">
+            <div class="grid">
+              <div class="row">
+                <div class="col c-2">
+                  <!-- normal textfield start -->
+                  <div class="m-textfield"><label for="" class="--required"> Mã</label>
+                    <div class="m-input-container">
+                      <input id="formTabIndexStart" class="m-input-container__input" type="text" name="employeeCode"
+                        dataProperty="EmployeeCode" placeholder="Mã nhân viên" rules="required">
+                      <p class="m-input-container__message"></p>
+                      <button type="button" class="m-input-container__icon m-icon" tabindex="-1"></button>
+                    </div>
+                  </div>
+                  <!-- normal textfield end -->
+                </div>
+                <div class="col c-4">
+                  <!-- normal textfield start -->
+                  <div class="m-textfield"><label for="" class="--required"> Tên</label>
+                    <div class="m-input-container">
+                      <input class="m-input-container__input" type="text" name="employeeName"
+                        dataProperty="EmployeeName" placeholder="Họ và tên" rules="required">
+                      <p class="m-input-container__message"></p>
+                      <button type="button" class="m-input-container__icon m-icon" tabindex="-1"></button>
+                    </div>
+                  </div>
+                  <!-- normal textfield end -->
+                </div>
+                <div class="col c-2">
+                  <!-- date textfield start-->
+                  <label class="m-textfield"><label for="">Ngày sinh</label>
+                    <div class="m-date-container">
+                      <input class="m-date-container__input m-input-container__input" type="date" name="dateOfBirth"
+                        dataProperty="DateOfBirth" placeholder="dd/mm/yyyy">
+                    </div>
+                  </label>
+                  <!-- date textfield end-->
+                </div>
+                <div class="col c-4">
+                  <!-- horizontal radio start -->
+                  <div class="m-textfield"><label for="">Giới tính</label>
+                    <div class="m-radio-container m-radio-container--hor">
+                      <div class="m-radio-item">
+                        <input class="m-radio-item__input" type="radio" name="gender" dataProperty="Gender" value="1"
+                          id="m-radio-nam" checked>
+                        <label class="m-radio-item__label" for="m-radio-nam">Nam</label>
+                      </div>
+                      <div class="m-radio-item">
+                        <input class="m-radio-item__input" type="radio" name="gender" dataProperty="Gender" value="0"
+                          id="m-*nu">
+                        <label class="m-radio-item__label" for="m-radio-nu">Nữ</label>
+                      </div>
+                      <div class="m-radio-item">
+                        <input class="m-radio-item__input" type="radio" name="gender" dataProperty="Gender" value="-1"
+                          id="m-radio-khac">
+                        <label class="m-radio-item__label" for="m-radio-khac">Khác</label>
+                      </div>
+                    </div>
+                    <!-- horizontal radio end -->
+                  </div>
+                </div>
+                <div class="col c-6">
+                  <!-- dropdownlist top start -->
+                  <div id="departmentDropdown" class="m-dropdownlist">
+                    <!-- textfield with icon start -->
+                    <div class="m-textfield"><label for="" class="--required">Đơn vị</label>
+                      <div class="m-input-container">
+                        <input class="m-input-container__input" type="text" name="departmentId"
+                          dataProperty="DepartmentId" placeholder="Chọn đơn vị" rules="required">
+                        <p class="m-input-container__message"></p>
+                        <button type="button" class="m-input-container__icon m-icon"></button>
+                        <div class="m-dropdownlist-data">
+                        </div>
+                      </div>
+                    </div>
+                    <!-- textfield with icon end -->
+                  </div>
+                  <!-- dropdownlist top end -->
+                </div>
+                <div class="col c-4">
+                  <!-- normal textfield start -->
+                  <div class="m-textfield"><label for="" class="" title="Số chứng minh nhân dân"> Số CMND</label>
+                    <div class="m-input-container">
+                      <input class="m-input-container__input" type="number" name="identityNumber"
+                        dataProperty="IdentityNumber" placeholder="Số CMND">
+                    </div>
+                  </div>
+                  <!-- normal textfield end -->
+                </div>
+                <div class="col c-2">
+                  <!-- date textfield start-->
+                  <div class="m-textfield"><label for="">Ngày cấp</label>
+                    <div class="m-date-container">
+                      <input class="m-date-container__input m-input-container__input" type="date" name="identityDate"
+                        placeholder="Ngày cấp CMND">
+                    </div>
+                  </div>
+                  <!-- date textfield end-->
+                </div>
+                <div class="col c-6">
+                  <!-- normal textfield start -->
+                  <div class="m-textfield"><label for="" class=""> Chức danh</label>
+                    <div class="m-input-container">
+                      <input class="m-input-container__input" type="text" name="positionName"
+                        dataProperty="PositionName" placeholder="Chức danh">
+                    </div>
+                  </div>
+                  <!-- normal textfield end -->
+                </div>
+                <div class="col c-6">
+                  <!-- normal textfield start -->
+                  <div class="m-textfield"><label for="" class=""> Nơi cấp</label>
+                    <div class="m-input-container">
+                      <input class="m-input-container__input" type="text" name="identityPlace"
+                        placeholder="Cơ quan cấp CMND">
+                    </div>
+                  </div>
+                  <!-- normal textfield end -->
+                </div>
+                <div class="col c-12">
+                  <!-- normal textfield start -->
+                  <div class="m-textfield"><label for="" class=""> Địa chỉ</label>
+                    <div class="m-input-container">
+                      <input class="m-input-container__input" type="text" name="address" placeholder="Địa chỉ tạm trú">
+                    </div>
+                  </div>
+                  <!-- normal textfield end -->
+                </div>
+                <div class="col c-3">
+                  <!-- normal textfield start -->
+                  <div class="m-textfield"><label for="" class="" title="Điện thoại di động"> ĐT di
+                      động</label>
+                    <div class="m-input-container">
+                      <input class="m-input-container__input" type="number" name="phoneNumber"
+                        placeholder="Số điện thoại di động">
+                      <p class="m-input-container__message"></p>
+                      <button type="button" class="m-input-container__icon m-icon" tabindex="-1"></button>
+                    </div>
+                  </div>
+                  <!-- normal textfield end -->
+                </div>
+                <div class="col c-3">
+                  <!-- normal textfield start -->
+                  <div class="m-textfield"><label for="" class="" title="Điện thoại cố định"> ĐT cố định</label>
+                    <div class="m-input-container">
+                      <input class="m-input-container__input" type="number" name="telephoneNumber"
+                        placeholder="Số điện thoại cố định">
+                      <p class="m-input-container__message"></p>
+                      <button type="button" class="m-input-container__icon m-icon" tabindex="-1"></button>
+                    </div>
+                  </div>
+                  <!-- normal textfield end -->
+                </div>
+                <div class="col c-3">
+                  <!-- normal textfield start -->
+                  <div class="m-textfield"><label for="" class=""> Email</label>
+                    <div class="m-input-container">
+                      <input class="m-input-container__input" type="text" name="email" dataProperty="Email"
+                        placeholder="Thư điện tử">
+                      <p class="m-input-container__message"></p>
+                      <button type="button" class="m-input-container__icon m-icon" tabindex="-1"></button>
+                    </div>
+                  </div>
+                  <!-- normal textfield end -->
+                </div>
+                <div class="row">
+                  <div class="col c-3">
+                    <!-- normal textfield start -->
+                    <div class="m-textfield"><label for="" class=""> Tài khoản ngân hàng</label>
+                      <div class="m-input-container">
+                        <input class="m-input-container__input" type="number" name="bankAccountNumber"
+                          placeholder="Số tài khoản ngân hàng">
+                        <p class="m-input-container__message"></p>
+                        <button type="button" class="m-input-container__icon m-icon" tabindex="-1"></button>
+                      </div>
+                    </div>
+                    <!-- normal textfield end -->
+                  </div>
+                  <div class="col c-3">
+                    <!-- normal textfield start -->
+                    <div class="m-textfield"><label for="" class=""> Tên ngân hàng</label>
+                      <div class="m-input-container">
+                        <input class="m-input-container__input" type="text" name="bankName" placeholder="Tên ngân hàng">
+                        <p class="m-input-container__message"> nội dung message
+                          dài</p>
+                        <button type="button" class="m-input-container__icon m-icon" tabindex="-1"></button>
+                      </div>
+                    </div>
+                    <!-- normal textfield end -->
+                  </div>
+                  <div class="col c-3">
+                    <!-- normal textfield start -->
+                    <div class="m-textfield"><label for="" class=""> Chi nhánh</label>
+                      <div class="m-input-container">
+                        <input class="m-input-container__input" type="text" name="bankBranchName"
+                          placeholder="Chi nhánh ngân hàng">
+                        <p class="m-input-container__message"> nội dung message
+                          dài</p>
+                        <button type="button" class="m-input-container__icon m-icon" tabindex="-1"></button>
+                      </div>
+                    </div>
+                    <!-- normal textfield end -->
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <!-- popup form end-->
+        </div>
+        <!-- popup body end -->
+        <!-- popup footer start -->
+        <div class="m-popup-container__footer m-button-container">
+          <div class="m-popup-footer__right-panel m-button-container">
+            <button class="m-popup-footer__primary-btn m-btn primary-btn" type="submit">Cất và
+              thêm</button>
+            <button class="m-popup-footer__secondary-btn m-btn secondary-btn" type="submit">Cất
+            </button>
+          </div>
+          <div id="formTabIndexEnd" class="m-popup-footer__left-panel">
+            <button id="formCancelBtn" type="button" class="m-popup-footer__cancel-btn m-btn secondary-btn">Hủy
+            </button>
+          </div>
+        </div>
+        <!-- popup footer end -->
+      </div>
+      <!-- popup container end -->
+    </div>
+    <!-- popup end -->
+  </form>
+
+  <div class="cancel-dialog m-dialog">
+    <div class="m-dialog-container">
+      <div class="m-dialog-header">
+        <h1 class="m-dialog-header__title">Hủy thay đổi? </h1>
+        <p id="dialogCloseBtn" class="m-dialog-header__close-btn"></p>
+      </div>
+      <p class="m-dialog__description">Thông tin bạn đang nhập sẽ không được lưu.</p>
+      <div class="m-dialog__footer m-button-container">
+        <button id="dialogPrimaryBtn" type="button" class="m-dialog-footer__primary-btn m-btn primary-btn">Tiếp
+          tục</button>
+        <button id="dialogCancelBtn" type="button" class="m-dialog-footer__cancel-btn m-btn secondary-btn">Hủy</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="m-notify --success">
+    <div class="m-notify-container">
+      <div class="m-notify-header">
+        <div class="m-notify-header__icon"></div>
+        <div class="m-notify-header__message">Thành công.</div>
+      </div>
+      <hr class="m-notify__separate" />
+      <div class="m-notify-footer m-button-container">
+        <button type="button" class="m-notify-footer__primary-btn m-btn primary-btn">Đồng ý</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="m-notify --warning">
+    <div class="m-notify-container">
+      <div class="m-notify-header">
+        <div class="m-notify-header__icon"></div>
+        <div class="m-notify-header__message">Mã lỗi.</div>
+      </div>
+      <hr class="m-notify__separate" />
+      <div class="m-notify-footer m-button-container">
+        <button type="button" class="m-notify-footer__primary-btn m-btn primary-btn">Đồng ý</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="loading">
+    <div class="loading-container">
+      <div class="loading-icon"></div>
+    </div>
+  </div>
+
+  <script src="./libs/jquery-3.6.1.js"></script>
+  <script src="./js/validator.js" type="module"></script>
+  <script src="./js/main.js" type="module"></script>
+  <script>
+
+  </script>
 </body>
 
 </html>
