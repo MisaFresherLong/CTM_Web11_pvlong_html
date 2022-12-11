@@ -41,9 +41,11 @@
 }
 
 .m-notify-footer {
+  width: 100%;
   float: right;
   display: flex;
   flex-flow: nowrap row-reverse;
+  justify-content: space-between;
 }
 
 .m-notify__footer .m-btn~.m-btn {

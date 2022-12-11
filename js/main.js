@@ -3,8 +3,9 @@ import { Dropdownlist } from "./dropdownlist.js";
 
 window.addEventListener("DOMContentLoaded", async function (event) {
   try {
-    await loadTable();
+    await initTable();
     await getDepartments();
+    initEvent();
     new Dropdownlist(recordPerPage, "#recordPerPageDropDown");
     new Dropdownlist(departments, "#departmentDropdown", {
       keyField: "DepartmentId",
@@ -19,16 +20,6 @@ window.addEventListener("DOMContentLoaded", async function (event) {
 });
 
 /**
- * Xử lý tải dữ liệu ra bảng
- * @param {*} event
- * Author: PVLong (25/10/2022)
- */
-async function loadTable(event) {
-  await initTable();
-  initEvent();
-}
-
-/**
  * Khởi tạo biến toàn cục
  */
 const employeePage = $("#employee-page");
@@ -37,6 +28,7 @@ const employeeTable = $("#employee-page .m-table");
 
 const loadingComponent = $("#loading");
 const cancelConfirmDialog = $(".cancel-dialog");
+const confirmDeleteDialog = $(".confirm-delete-dialog");
 const successNotify = $(".m-notify.--success");
 const errorNotify = $(".m-notify.--warning");
 
@@ -96,6 +88,10 @@ const apiList = {
   },
   getEmployees: {
     url: "https://amis.manhnv.net/api/v1/Employees",
+    method: "GET",
+  },
+  filterEmployees: {
+    url: "https://amis.manhnv.net/api/v1/Employees/filter",
     method: "GET",
   },
   addEmployee: {
@@ -182,26 +178,45 @@ const tableDetail = [
 
 /**
  * Khởi tạo sự kiện
- * Author: PVLong (23/10/2022)
+ * Author: PVLong (6/12/2022)
  */
 function initEvent() {
-  // init header event
+  // header event
   $("#header__menu-icon").click(toggleSidebar);
 
-  // init form event
+  // search event
+  $("#search-input").change(handleSearch);
+
+  // refresh event
+  $(".table-toolbar__refreshIcon").click(handleSearch);
+
+  // form event
   $("#addEmployeeBtn").click(showAddEmployeeForm);
-  $("#formCloseBtn").click(hideEmployeeForm);
+  $("#formCloseBtn").click(showCancelDialog);
   $("#formCancelBtn").click(showCancelDialog);
-  $("#dialogCloseBtn").click(hideCancelDialog);
-  $("#dialogCancelBtn").click(hideCancelDialog);
-  $("#dialogPrimaryBtn").click(hideEmployeeForm);
-  $(".table-toolbar__refreshIcon").click(loadTable);
   $("#formTabIndexEnd").keydown(handleRepeatTabIndex);
 
-  // init notify event
+  $("#dialogCloseBtn").click(hideEmployeeForm);
+  $("#dialogCancelBtn").click(hideCancelDialog);
+  $("#dialogPrimaryBtn").click(hideCancelDialogAndSubmit);
+
+  // notify event
   $(successNotify).find(".primary-btn").click(hideSuccessNotify);
   $(errorNotify).find(".primary-btn").click(hideErrorNotify);
 
+  // delete event
+  $("#deleteManyBtn").click(deleteMany);
+
+  // confirm delete event
+  $(confirmDeleteDialog)
+    .find(".secondary-btn")
+    .click(() => $(confirmDeleteDialog).hide());
+}
+
+/**
+ * Khởi tạo sự kiện table
+ */
+function initTableEvent() {
   // init checkbox event
   $("#employee-page thead .row-checkbox").dblclick(function (event) {
     event.stopPropagation();
@@ -218,14 +233,14 @@ function initEvent() {
   $("#employee-page tbody tr").dblclick(showEditEmployeeForm);
   $("#employee-page tbody tr .editRowBtn").click(showEditEmployeeForm);
 
-  // init delete event
-  $("#employee-page tbody tr .deleteRowBtn").click(handleDeleteOne);
+  // delete event
+  $("#employee-page tbody tr .deleteRowBtn").click(deleteOne);
 }
 
 /**
  * Gọi api thông tin đơn vị - department xuống và lưu vào biến
  * @param {*} event
- * Author: PVLong (25/10/2022)
+ * Author: PVLong (6/12/2022)
  */
 async function getDepartments(event) {
   await $.ajax({
@@ -238,22 +253,40 @@ async function getDepartments(event) {
       console.log(err);
     });
 }
+/**
+ * Xử lý sự kiện tìm kiếm
+ * @param {*} event
+ */
+function handleSearch(event) {
+  const searchKeyword = $(this).val();
+  const params = {
+    employeeFilter: searchKeyword,
+    pageNumber: 1,
+    pageSize: 20,
+  };
+  initTable(params);
+}
 
 /**
  * Gọi api, khởi tạo và hiển thị table
- * Author: PVLong (23/10/2022)
+ * Author: PVLong (6/12/2022)
  */
-async function initTable() {
+async function initTable(params = {}) {
   emptyTable();
   renderTableHeader();
   tableLoadingComponent.show();
   await $.ajax({
-    url: apiList.getEmployees.url,
+    type: apiList.filterEmployees.method,
+    url: apiList.filterEmployees.url,
+    data: params,
+    dataType: "json",
+    contentType: "application/json",
   })
     .done(function (res) {
       // employees = res.slice(0, 15);
-      employees = res;
+      employees = res.Data;
       renderTableBody(employees);
+      initTableEvent();
     })
     .fail(function (err) {
       console.log(err);
@@ -265,7 +298,7 @@ async function initTable() {
 
 /**
  * Xóa dữ liệu table
- * Author: PVLong (23/10/2022)
+ * Author: PVLong (6/12/2022)
  */
 function emptyTable() {
   $(employeeTable).find("thead").empty();
@@ -275,7 +308,7 @@ function emptyTable() {
 /**
  * Hiển thị table ra giao diện người dùng
  * @param {object} employees
- * Author: PVLong (23/10/2022)
+ * Author: PVLong (6/12/2022)
  */
 function renderTable(employees) {
   renderTableHeader();
@@ -284,7 +317,7 @@ function renderTable(employees) {
 
 /**
  * Hiển thị table header ra giao diện người dùng
- * Author: PVLong (23/10/2022)
+ * Author: PVLong (6/12/2022)
  */
 function renderTableHeader() {
   $(employeeTable).find("thead").empty();
@@ -307,7 +340,7 @@ function renderTableHeader() {
 /**
  * Hiển thị table body ra giao diện người dùng
  * @param {object[]} employees
- * Author: PVLong (23/10/2022)
+ * Author: PVLong (6/12/2022)
  */
 function renderTableBody(employees) {
   $(employeeTable).find("tbody").empty();
@@ -329,7 +362,7 @@ function renderTableBody(employees) {
  * Hiển thị table body ra giao diện người dùng
  * @param {object} employee
  * @param {number} index
- * Author: PVLong (23/10/2022)
+ * Author: PVLong (6/12/2022)
  */
 function renderTableBodyRow(employee, index) {
   let html = tableDetail.reduce((prevValue, col) => {
@@ -373,16 +406,26 @@ function renderTableBodyRow(employee, index) {
 /**
  * Xử lý sự kiện đóng mở sidebar
  * @param {object} event
- * Author: PVLong (23/10/2022)
+ * Author: PVLong (6/12/2022)
  */
 function toggleSidebar(event) {
   employeePage.toggleClass("--sidebar-close");
 }
 
+function getNewEmployeeCode() {
+  $.ajax({
+    type: "GET",
+    url: "https://amis.manhnv.net/api/v1/Employees/NewEmployeeCode",
+    success: function (response) {
+      formTabIndexStart.val(response);
+    },
+  });
+}
+
 /**
  * Hiển thị popup thêm mới
  * @param {object} event
- * Author: PVLong (23/10/2022)
+ * Author: PVLong (6/12/2022)
  */
 function showAddEmployeeForm(event) {
   $(employeeForm).find(".employee-form-body__title").text("Thêm mới nhân viên");
@@ -391,6 +434,7 @@ function showAddEmployeeForm(event) {
   setTimeout(() => {
     loadingComponent.hide();
     employeeForm.show();
+    getNewEmployeeCode();
     formTabIndexStart.focus();
   }, 500);
 }
@@ -398,7 +442,7 @@ function showAddEmployeeForm(event) {
 /**
  * Hiển thị popup chỉnh sửa
  * @param {object} event
- * Author: PVLong (23/10/2022)
+ * Author: PVLong (6/12/2022)
  */
 function showEditEmployeeForm(event) {
   const index = $(this).data("key");
@@ -418,7 +462,7 @@ function showEditEmployeeForm(event) {
 /**
  * Hiển thị dữ liệu vào form
  * @param {object} employee
- * Author: PVLong (23/10/2022)
+ * Author: PVLong (6/12/2022)
  */
 function loadDataToEmployeeForm(employee) {
   const dateKey = ["DateOfBirth", "IdentityDate"];
@@ -426,9 +470,13 @@ function loadDataToEmployeeForm(employee) {
 
   for (let key in employee) {
     let formattedValue = employee[key];
+
+    // Format dữ liệu ngày tháng
     if (dateKey.includes(key)) {
       formattedValue = formFormatter.date(employee[key]);
     }
+
+    // Gán dữ liệu vào form
     if (radioKey.includes(key)) {
       $(employeeForm)
         .find(
@@ -445,10 +493,10 @@ function loadDataToEmployeeForm(employee) {
 /**
  *  Ẩn form thêm mới/ chỉnh sửa nhân viên
  * @param {object} event
- * Author: PVLong (23/10/2022)
+ * Author: PVLong (6/12/2022)
  */
 function hideEmployeeForm(event) {
-  loadTable();
+  initTable();
   loadingComponent.show();
   setTimeout(() => {
     loadingComponent.hide();
@@ -461,33 +509,46 @@ function hideEmployeeForm(event) {
 /**
  * Hiện xác nhận muốn đóng form thông tin nhân viên
  * @param {object} event
- * Author: PVLong (23/10/2022)
+ * Author: PVLong (6/12/2022)
  */
 function showCancelDialog(event) {
   cancelConfirmDialog.show();
-  cancelConfirmDialog.find(".primary-btn").focus();
+  cancelConfirmDialog.find(".secondary-btn").focus();
 }
 
 /**
  * Ẩn xác nhận muốn đóng form thông tin nhân viên
  * @param {object} event
- * Author: PVLong (23/10/2022)
+ * Author: PVLong (6/12/2022)
  */
 function hideCancelDialog(event) {
   cancelConfirmDialog.hide();
 }
 
 /**
+ * Ẩn xác nhận muốn đóng form thông tin nhân viên và submit form
+ * @param {object} event
+ * Author: PVLong (6/12/2022)
+ */
+function hideCancelDialogAndSubmit(event) {
+  $("#formSubmitBtn").click();
+  cancelConfirmDialog.hide();
+}
+
+/**
  * Hiển thị thông báo thành công
  * @param {string} message
+ * Author: PVLong (6/12/2022)
  */
 function showSuccessNotify(message = "Thành công.") {
   $(successNotify).find(".m-notify-header__message").text(message);
   successNotify.show();
+  $(successNotify).find(".primary-btn").focus();
 }
 
 /**
  * Ẩn thông báo thành công
+ * Author: PVLong (6/12/2022)
  */
 function hideSuccessNotify() {
   successNotify.hide();
@@ -497,14 +558,17 @@ function hideSuccessNotify() {
 /**
  * Hiển thị thông báo lỗi
  * @param {string} message
+ * Author: PVLong (6/12/2022)
  */
 function showErrorNotify(message = "Thất bại.") {
   $(errorNotify).find(".m-notify-header__message").text(message);
   errorNotify.show();
+  $(errorNotify).find(".primary-btn").focus();
 }
 
 /**
  * Ẩn thông báo lỗi
+ * Author: PVLong (6/12/2022)
  */
 function hideErrorNotify() {
   errorNotify.hide();
@@ -513,11 +577,11 @@ function hideErrorNotify() {
 /**
  * Xử lý quay vòng tabindex
  * @param {object} event
- * Author: PVLong (23/10/2022)
+ * Author: PVLong (6/12/2022)
  */
 function handleRepeatTabIndex(event) {
   event.preventDefault();
-  // formTabIndexStart.focus();
+  formTabIndexStart.focus();
   switch (event.which) {
     case 13: {
       showCancelDialog();
@@ -529,7 +593,7 @@ function handleRepeatTabIndex(event) {
 /**
  * Xử lý checkbox check nhiều
  * @param {object} event
- * Author: PVLong (23/10/2022)
+ * Author: PVLong (6/12/2022)
  */
 function handleHeaderCheckbox(event) {
   $("#employee-page tbody .row-checkbox").each(function (index) {
@@ -540,7 +604,7 @@ function handleHeaderCheckbox(event) {
 /**
  * Xử lý checkbox nhỏ lẻ
  * @param {object} event
- * Author: PVLong (23/10/2022)
+ * Author: PVLong (6/12/2022)
  */
 function handleBodyCheckbox(event) {
   if (!event.target.checked) {
@@ -560,7 +624,7 @@ function handleBodyCheckbox(event) {
 /**
  * Thay đổi trạng thái nút xóa nhiều - toolbar
  * @param {object} event
- * Author: PVLong (23/10/2022)
+ * Author: PVLong (6/12/2022)
  */
 function changeDeleteBtnState(event) {
   let isAnyChecked = false;
@@ -574,8 +638,15 @@ function changeDeleteBtnState(event) {
 }
 
 /**
+ * Submit form
+ * Author: PVLong (6/12/2022)
+ */
+function submitForm() {}
+
+/**
  * Xử lý sự kiện submit form
  * @param {object} payload
+ * Author: PVLong (6/12/2022)
  */
 function handleSubmitForm(payload) {
   // api thêm mới employee
@@ -605,11 +676,33 @@ function handleSubmitForm(payload) {
 }
 
 /**
- * Xử lý sự kiện xóa dòng
- * @param {object} event
+ * Hàm hiển thị dialog xóa một dòng
  */
-function handleDeleteOne(event) {
+function deleteOne() {
   const employee = employees[$(this).data("key")];
+  const message = `Bạn có thực sự muốn xóa Nhân viên <${employee.EmployeeCode}>`;
+  $(confirmDeleteDialog).find(".m-notify-header__message").text(message);
+  confirmDeleteDialog.show();
+  $(confirmDeleteDialog).find(".primary-btn").focus();
+
+  // Remove sự kiện
+  $(confirmDeleteDialog).find(".primary-btn").unbind("click");
+
+  // Gán sự kiện
+  $(confirmDeleteDialog)
+    .find(".primary-btn")
+    .click(() => {
+      handleDeleteOne(employee);
+      confirmDeleteDialog.hide();
+    });
+}
+
+/**
+ * Xử lý sự kiện xóa dòng
+ * @param {string} paramsEmployee nhân viên cần xóa
+ */
+function handleDeleteOne(paramsEmployee = "") {
+  const employee = paramsEmployee || employees[$(this).data("key")];
   $.ajax({
     url: `${apiList.deleteEmployee.url}/${employee["EmployeeId"]}`,
     type: apiList.deleteEmployee.method,
@@ -622,8 +715,64 @@ function handleDeleteOne(event) {
       showErrorNotify(err.responseJSON.userMsg);
     })
     .always(function () {
-      loadTable();
+      initTable();
     });
+}
+
+/**
+ * Hàm hiển thị dialog xóa nhiều dòng
+ */
+function deleteMany() {
+  const deleteCodes = [];
+  $("#employee-page tbody .row-checkbox:checked").each(function (index) {
+    const key = $(this).parents("tr").data("key");
+    deleteCodes.push(employees[key].EmployeeCode);
+  });
+
+  // Hiển thị dialog
+  let message = `Bạn có thực sự muốn xóa các Nhân viên`;
+  deleteCodes.forEach((code) => (message += ` <${code}>`));
+  $(confirmDeleteDialog).find(".m-notify-header__message").text(message);
+  confirmDeleteDialog.show();
+  $(confirmDeleteDialog).find(".primary-btn").focus();
+
+  // Remove sự kiện
+  $(confirmDeleteDialog).find(".primary-btn").unbind("click");
+
+  // Gán sự kiện
+  $(confirmDeleteDialog)
+    .find(".primary-btn")
+    .click(() => {
+      handleDeleteMany();
+      confirmDeleteDialog.hide();
+    });
+}
+
+/**
+ * Xử lý xóa nhiều
+ */
+function handleDeleteMany() {
+  const deleteKeys = [];
+  $("#employee-page tbody .row-checkbox:checked").each(function (index) {
+    const key = $(this).parents("tr").data("key");
+    deleteKeys.push(employees[key].EmployeeId);
+  });
+  deleteKeys.forEach((employeeID) => {
+    $.ajax({
+      url: `${apiList.deleteEmployee.url}/${employeeID}`,
+      type: apiList.deleteEmployee.method,
+      dataType: "json",
+      contentType: "application/json",
+    })
+      .done((res) => console.log(res))
+      .fail(function (err) {
+        console.log(err);
+        showErrorNotify(err.responseJSON.userMsg);
+      })
+      .always(function () {
+        initTable();
+      });
+  });
 }
 
 /**
@@ -641,5 +790,10 @@ function handleResetForm(event) {
     .find(".--error")
     .each(function () {
       $(this).removeClass("--error");
+    });
+  $(employeeForm)
+    .find(".--validated")
+    .each(function () {
+      $(this).removeClass("--validated");
     });
 }

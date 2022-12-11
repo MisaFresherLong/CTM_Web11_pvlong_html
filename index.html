@@ -143,7 +143,8 @@
           <div class="toolbar__right-panel">
             <label class="m-textfield --search-icon">
               <div class="m-input-container">
-                <input class="m-input-container__input " type="text" name="search" placeholder="Tìm kiếm">
+                <input id="search-input" class="m-input-container__input " type="text" name="search"
+                  placeholder="Tìm kiếm">
                 <button type="button" class="m-input-container__icon m-icon" tabindex="-1"></button>
               </div>
             </label>
@@ -444,7 +445,7 @@
           <div class="m-popup-footer__right-panel m-button-container">
             <button class="m-popup-footer__primary-btn m-btn primary-btn" type="submit">Cất và
               thêm</button>
-            <button class="m-popup-footer__secondary-btn m-btn secondary-btn" type="submit">Cất
+            <button id="formSubmitBtn" class="m-popup-footer__secondary-btn m-btn secondary-btn" type="submit">Cất
             </button>
           </div>
           <div id="formTabIndexEnd" class="m-popup-footer__left-panel">
@@ -459,21 +460,53 @@
     <!-- popup end -->
   </form>
 
-  <div class="cancel-dialog m-dialog">
-    <div class="m-dialog-container">
-      <div class="m-dialog-header">
-        <h1 class="m-dialog-header__title">Hủy thay đổi? </h1>
-        <p id="dialogCloseBtn" class="m-dialog-header__close-btn"></p>
+  <!-- cancel dialog start -->
+  <div class="cancel-dialog m-notify --info">
+    <div class="m-notify-container">
+      <div class="m-notify-header">
+        <div class="m-notify-header__icon"></div>
+        <div class="m-notify-header__message">Dữ liệu đã bị thay đổi. Bạn có muốn cất không?</div>
       </div>
-      <p class="m-dialog__description">Thông tin bạn đang nhập sẽ không được lưu.</p>
-      <div class="m-dialog__footer m-button-container">
-        <button id="dialogPrimaryBtn" type="button" class="m-dialog-footer__primary-btn m-btn primary-btn">Tiếp
-          tục</button>
-        <button id="dialogCancelBtn" type="button" class="m-dialog-footer__cancel-btn m-btn secondary-btn">Hủy</button>
+      <hr class="m-notify__separate" />
+      <div class=" m-notify-footer m-button-container">
+        <div class="m-popup-footer__right-panel m-button-container">
+          <button id="dialogPrimaryBtn" class="m-popup-footer__primary-btn m-btn primary-btn" type="submit">Cất</button>
+          <button id="dialogCloseBtn" class="m-popup-footer__secondary-btn m-btn secondary-btn" type="submit">Không
+          </button>
+        </div>
+        <div id="formTabIndexEnd" class="m-popup-footer__left-panel">
+          <button id="dialogCancelBtn" type="button" class="m-popup-footer__cancel-btn m-btn secondary-btn">Hủy
+          </button>
+        </div>
       </div>
     </div>
   </div>
+  <!-- cancel dialog start -->
 
+  <!-- cancel dialog start -->
+  <div class="confirm-delete-dialog m-notify --warning">
+    <div class="m-notify-container">
+      <div class="m-notify-header">
+        <div class="m-notify-header__icon"></div>
+        <div class="m-notify-header__message">Bạn thực sự muốn xóa Nhân viên này?</div>
+      </div>
+      <hr class="m-notify__separate" />
+      <div class=" m-notify-footer m-button-container">
+        <div class="m-popup-footer__right-panel m-button-container">
+          <button id="confirmDeletePrimaryBtn" class="m-popup-footer__primary-btn m-btn primary-btn"
+            type="submit">Xóa</button>
+
+        </div>
+        <div id="formTabIndexEnd" class="m-popup-footer__left-panel">
+          <button id="confirmDeleteCancelBtn" type="button" class="m-popup-footer__cancel-btn m-btn secondary-btn">Không
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- cancel dialog start -->
+
+  <!-- success notify start -->
   <div class="m-notify --success">
     <div class="m-notify-container">
       <div class="m-notify-header">
@@ -486,7 +519,9 @@
       </div>
     </div>
   </div>
+  <!-- success notify end -->
 
+  <!-- error notify start -->
   <div class="m-notify --warning">
     <div class="m-notify-container">
       <div class="m-notify-header">
@@ -499,12 +534,15 @@
       </div>
     </div>
   </div>
+  <!-- error notify end -->
 
+  <!-- loading component start-->
   <div id="loading">
     <div class="loading-container">
       <div class="loading-icon"></div>
     </div>
   </div>
+  <!-- loading component end -->
 
   <script src="./libs/jquery-3.6.1.js"></script>
   <script src="./js/validator.js" type="module"></script>
