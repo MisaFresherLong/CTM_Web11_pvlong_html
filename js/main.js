@@ -193,7 +193,7 @@ function initEvent() {
   // form event
   $("#addEmployeeBtn").click(showAddEmployeeForm);
   $("#formCloseBtn").click(showCancelDialog);
-  $("#formCancelBtn").click(showCancelDialog);
+  $("#formCancelBtn").click(hideEmployeeForm);
   $("#formTabIndexEnd").keydown(handleRepeatTabIndex);
 
   $("#dialogCloseBtn").click(hideEmployeeForm);
@@ -382,7 +382,7 @@ function renderTableBodyRow(employee, index) {
         <!-- context button start -->
         <div class="m-context-menu-btn">
           <button class="m-context-menu-btn__label editRowBtn" data-key="${index}">Sửa</button>
-          <button class="m-context-menu-btn__icon">
+          <button class="m-context-menu-btn__icon icon-18 icon-context-menu">
             <div class="m-context-menu">
               <div class="m-context-menu-item">
                 <div class="m-context-menu-item__text">Nhân bản</div>

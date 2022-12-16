@@ -5,9 +5,6 @@
 }
 
 .m-dropdownlist .m-input-container__icon {
-  background: url(../../assets/img/Sprites.64af8f61.svg) no-repeat -364px -358px;
-  width: 16px;
-  height: 16px;
   padding: 10px;
   /* background-color: var(--wcag-white-color); */
 }

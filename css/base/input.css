@@ -1,3 +1,7 @@
+:root {
+  --internal-image-url: url(../../assets/img/Sprites.64af8f61.svg)
+}
+
 /* textfield */
 
 .m-textfield+.m-textfield {
@@ -66,7 +70,9 @@
 
 /* modifier */
 .m-textfield.--search-icon .m-input-container__icon {
-  background: url('../../assets/img/Sprites.64af8f61.svg') no-repeat -1041px -89px;
+  background-image: var(--internal-image-url);
+  background-position: -1041px -89px;
+  background-repeat: no-repeat;
   width: 20px;
   height: 20px;
 }
@@ -76,7 +82,9 @@
 }
 
 .m-textfield.--validated .m-input-container__icon {
-  background: url('../../assets/img/Sprites.64af8f61.svg') no-repeat -893px -406px;
+  background-image: var(--internal-image-url);
+  background-position: -893px -406px;
+  background-repeat: no-repeat;
   width: 17px;
   height: 18px;
 }
@@ -160,10 +168,12 @@
   font-weight: 500;
 }
 
-.m-date-container__input {}
+.m-date-container__input {
+  font-family: notosans-regular;
+}
 
 .m-date-container__input::-webkit-calendar-picker-indicator {
-  background: url(../../assets/img/Sprites.64af8f61.svg) no-repeat -128px -312px;
+  background: var(--internal-image-url) no-repeat -128px -312px;
   /* width: 16px;
   height: 16px; */
   opacity: 1;

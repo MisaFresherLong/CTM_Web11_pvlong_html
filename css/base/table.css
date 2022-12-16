@@ -1,3 +1,7 @@
+:root {
+  --internal-image-url: url(../../assets/img/Sprites.64af8f61.svg)
+}
+
 .m-table {
   max-width: 100%;
   position: relative;
@@ -21,9 +25,13 @@
 }
 
 .m-table-header__icon {
-  /* background: url('../../assets/img/Sprites.64af8f61.svg') no-repeat -1129px -365px;
+  /* background: var(--internal-image-url) no-repeat -1129px -365px;
     width: 24px;
     height: 24px; */
+}
+
+.m-table th {
+  text-transform: uppercase;
 }
 
 .m-table th,
@@ -121,13 +129,13 @@
 .m-table-paging__currentRecord {}
 
 .m-table-paging__previousPage {
-  background: url('../../assets/img/Sprites.64af8f61.svg') no-repeat -36px -361px;
+  background: var(--internal-image-url) no-repeat -36px -361px;
   width: 8px;
   height: 14px;
 }
 
 .m-table-paging__nextPage {
-  background: url('../../assets/img/Sprites.64af8f61.svg') no-repeat -84px -361px;
+  background: var(--internal-image-url) no-repeat -84px -361px;
   width: 8px;
   height: 14px;
 }

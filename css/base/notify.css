@@ -1,3 +1,7 @@
+:root {
+  --internal-image-url: url(../../assets/img/Sprites.64af8f61.svg)
+}
+
 .m-notify {
   position: fixed;
   top: 0;
@@ -55,28 +59,28 @@
 /* modify */
 /* success */
 .m-notify.--success .m-notify-header__icon {
-  background: url('../../assets/img/Sprites.64af8f61.svg') no-repeat -990px -462px;
+  background: var(--internal-image-url) no-repeat -990px -462px;
   width: 36px;
   height: 36px;
 }
 
 /* warning */
 .m-notify.--warning .m-notify-header__icon {
-  background: url('../../assets/img/Sprites.64af8f61.svg')no-repeat -598px -463px;
+  background: var(--internal-image-url)no-repeat -598px -463px;
   width: 36px;
   height: 37px;
 }
 
 /* error */
 .m-notify.--error .m-notify-header__icon {
-  background: url('../../assets/img/Sprites.64af8f61.svg') no-repeat -752px -462px;
+  background: var(--internal-image-url) no-repeat -752px -462px;
   width: 36px;
   height: 36px;
 }
 
 /* info */
 .m-notify.--info .m-notify-header__icon {
-  background: url('../../assets/img/Sprites.64af8f61.svg') no-repeat -672px -462px;
+  background: var(--internal-image-url) no-repeat -672px -462px;
   width: 36px;
   height: 36px;
 }

@@ -1,16 +1,17 @@
 @import url(../css/grid-system.css);
-@import url(../css/components/button.css);
-@import url(../css/components/dialog.css);
-@import url(../css/components/dropdownlist.css);
-@import url(../css/components/input.css);
-@import url(../css/components/popup.css);
-@import url(../css/components/table.css);
-@import url(../css/components/form.css);
-@import url(../css/components/contextMenu.css);
-@import url(../css/components/loading.css);
-@import url(../css/components/scrollbar.css);
-@import url(../css/components/notify.css);
+@import url(../css/base/button.css);
+@import url(../css/base/dialog.css);
+@import url(../css/base/dropdownlist.css);
+@import url(../css/base/input.css);
+@import url(../css/base/popup.css);
+@import url(../css/base/table.css);
+@import url(../css/base/form.css);
+@import url(../css/base/contextMenu.css);
+@import url(../css/base/loading.css);
+@import url(../css/base/scrollbar.css);
+@import url(../css/base/notify.css);
 @import url(./animation.css);
+@import url(./icon.css);
 
 @font-face {
   font-family: notosans-regular;
@@ -80,6 +81,10 @@
 
   /* context menu */
   --context-menu-item-height: 30px;
+
+  /* image url */
+
+  --internal-image-url: url(../../assets/img/Sprites.64af8f61.svg)
 }
 
 * {

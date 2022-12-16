@@ -129,16 +129,10 @@
 }
 
 .m-close-btn {
-  background: url('../../assets/img/Sprites.64af8f61.svg') no-repeat -144px -144px;
-  width: 24px;
-  height: 24px;
   display: inline-block;
 }
 
 .m-help-btn {
-  background: url('../../assets/img/Sprites.64af8f61.svg') no-repeat -88px -144px;
-  width: 24px;
-  height: 24px;
   display: inline-block;
 }
 
@@ -153,9 +147,6 @@
 }
 
 .delete-btn {
-  background: url('../../assets/img/Sprites.64af8f61.svg') no-repeat -462px -312px;
-  width: 20px;
-  height: 20px;
   filter: brightness(1000);
 }
 
@@ -181,9 +172,6 @@
 
 .m-context-menu-btn__icon {
   position: relative;
-  background: url('../../assets/img/Sprites.64af8f61.svg') no-repeat -896px -360px;
-  width: 18px;
-  height: 18px;
   display: inline-block;
   padding: 8px;
   border: none;

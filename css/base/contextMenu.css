@@ -19,13 +19,6 @@
   background-color: var(--main-color-50)
 }
 
-.m-context-menu-item__icon {
-  margin-right: 8px;
-  background: url('../../assets/img/Sprites.64af8f61.svg') no-repeat -1041px -89px;
-  width: 24px;
-  height: 24px;
-}
-
 .m-context-menu-item__text {
   text-transform: capitalize;
 }
