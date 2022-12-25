@@ -10,6 +10,7 @@
 @import url(../css/base/loading.css);
 @import url(../css/base/scrollbar.css);
 @import url(../css/base/notify.css);
+@import url(../css/base/toast-message.css);
 @import url(./animation.css);
 @import url(./icon.css);
 
@@ -65,6 +66,13 @@
 
   --sidebar-background: #393A3E;
 
+
+  /* toast */
+  --toast-success-color: #50B83C;
+  --toast-warning-color: #F49342;
+  --toast-error-color: #DE3618;
+  --toast-info-color: #009EEB;
+
   /* table */
   --table-row-height: 48px;
   --table-header-background: #E0E0E0;
@@ -83,7 +91,6 @@
   --context-menu-item-height: 30px;
 
   /* image url */
-
   --internal-image-url: url(../../assets/img/Sprites.64af8f61.svg)
 }
 
